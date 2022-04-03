@@ -10,18 +10,18 @@ import javax.persistence.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "customer")
-public class Order {
+@Table(name = "pizza")
+public class Pizza {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
 
-    public Long getId() {
-        return id;
-    }
+    private String name;
+    private Long price;
+    private String size;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    @ManyToOne
+    @JoinColumn(name = "order_id", nullable = false, referencedColumnName = "id")
+    private Order order;
 }
